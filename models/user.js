@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Menu = sequelize.define("Menu", {
+  const User = sequelize.define("User", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -68,6 +68,6 @@ module.exports = function(sequelize, DataTypes) {
     // }
   });
 
-  return Menu;
+  return User;
 };
 
