@@ -44,29 +44,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     }
-    // // check AWS for saving images @ Amazon and then use AWS links to store the images in our local db
-    // image: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1, 200]
-    //   }
-    // },
-    // detail: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1, 100]
-    //   }
-    // },
-    // price: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false
-    //   // validate: {
-    //   //   len: [1, 10]
-    //   // }
-    // }
   });
+
+  // creating a foreign key to link users to events they create
+  User.associate = function(models) {
+    // Associating Users with Events
+    // When an user is deleted, also delete any associated events
+    User.hasMany(models.Event, {
+      onDelete: "cascade"
+    });
+  };
 
   return User;
 };

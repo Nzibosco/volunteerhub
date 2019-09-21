@@ -41,6 +41,17 @@ module.exports = function(sequelize, DataTypes) {
           allowNull: false
       }
     });
+
+    // foreign key to link events to their users. 
+    // events cannot be created without users. They are created by users.
+
+    Event.associate = function(models) {
+        Event.belongsTo(models.User, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      };
   
     return Event;
   };
