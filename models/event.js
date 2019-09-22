@@ -35,10 +35,6 @@ module.exports = function(sequelize, DataTypes) {
       country: {
         type: DataTypes.STRING,
         allowNull: false
-      }, 
-      organizedBy: {
-          type: DataTypes.STRING,
-          allowNull: false
       }
     });
 

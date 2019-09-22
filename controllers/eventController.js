@@ -5,77 +5,72 @@ const Sequelize = require("sequelize") // this was created but never used.  Redu
 // Defining methods for the eventController
 module.exports = {
 
-  // Post a user
+  // Post an event
   create: (req, res) => {
     // Save to MySQL database
-    db.User
+    db.Event
       .create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        phone: req.body.phone,
+        name: req.body.firstName,
+        detail: req.body.detail,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
         state: req.body.state,
         country: req.body.country
-        // detail: req.body.detail,
-        // image: req.body.image,
-        // price: req.body.price
       })
-      .then(user => {
-        // Send created user to client
-        res.send(user);
+      .then(event => {
+        // Send created event to client
+        res.send(event);
       });
   },
 
-  // FETCH all users
+  // FETCH all events
 
   findAll: (req, res) => {
-    db.User
+    db.Event
       .findAll()
-      .then(users => {
-        // Send all users to Client
-        res.send(users);
+      .then(events => {
+        // Send all events to Client
+        res.send(events);
       });
   },
 
-  // Find a user by Id
+  // Find an event by Id
   findOne: (req, res) => {
-    db.User
+    db.Event
       .findByPk(req.params.id)
-      .then(user => {
-        res.send(user);
+      .then(event => {
+        res.send(event);
       })
   },
 
-  // Update a user
+  // Update an event
   update: (req, res) => {
     const id = req.params.id;
-    db.User
-      .update({firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        phone: req.body.phone,
+    db.Event
+      .update({
+        name: req.body.firstName,
+        detail: req.body.detail,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
         state: req.body.state,
-        country: req.body.country},
+        country: req.body.country
+      },
         { where: { id: id } }
       )
       .then(() => {
-        res.status(200).send("updated successfully a user with id = " + id);
+        res.status(200).send("updated successfully an event with id = " + id);
       });
   },
 
-  // Delete a user by Id
+  // Delete an event by Id
   delete: (req, res) => {
     const id = req.params.id;
-    db.User
+    db.Event
       .destroy({
         where: { id: id }
       })
       .then(() => {
-        res.status(200).send('deleted successfully a user with id = ' + id);
+        res.status(200).send('deleted successfully an event with id = ' + id);
       });
   }
 };
