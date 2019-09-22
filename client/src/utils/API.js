@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  // Gets all menu
+  // Gets all
   getMenu: () => {
     return axios.get("/api/menu");
   },
