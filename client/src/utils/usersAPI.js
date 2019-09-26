@@ -7,7 +7,7 @@ export default {
   },
   // Gets 1 with the given id
   getById: function(id) {
-    return axios.get("/api/byId/" + id);
+    return axios.get("/api/user/" + id);
   },
   // Deletes with the given id
   deleteOne: function(id) {
